@@ -24,7 +24,7 @@ a{
     color: #eee;
 }
 
-.big-wrapper{
+/* .big-wrapper{
     width: 100%;
     height: 100vh;
     height: 100vh;
@@ -33,6 +33,44 @@ a{
     background-repeat: no-repeat;
     background-position: 50% 30%;
     overflow: hidden;
+} */
+
+#lamp{
+    width: 43vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 25%;
+}
+
+#interactiveBg::before {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-image:  url('../assets/images/sign.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat ;
+}
+
+#interactiveBg.animated {
+    -webkit-animation: filter-animation .05s infinite;
+  }
+  @-webkit-keyframes filter-animation {
+    0% {
+        -webkit-filter: sepia(0) saturate(2);
+    }
+    
+    50% {
+        -webkit-filter: sepia(1) saturate(8);
+    }
+    
+    100% {
+        -webkit-filter: sepia(0) saturate(2);
+    }
 }
 
 /* NAV */
@@ -240,18 +278,18 @@ nav ul li a:hover::after{
         -webkit-animation: filter-animation .05s infinite;
       }
       @-webkit-keyframes filter-animation {
-  0% {
-    -webkit-filter: sepia(0) saturate(2);
-  }
-  
-  50% {
-    -webkit-filter: sepia(1) saturate(8);
-  }
-  
-  100% {
-    -webkit-filter: sepia(0) saturate(2);
-  }
-}
+        0% {
+            -webkit-filter: sepia(0) saturate(2);
+        }
+        
+        50% {
+            -webkit-filter: sepia(1) saturate(8);
+        }
+        
+        100% {
+            -webkit-filter: sepia(0) saturate(2);
+        }
+    }
 }
 
 /*
