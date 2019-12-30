@@ -9,14 +9,13 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-
-body{
-    overflow-x: hidden;
+:root, html, body{
+    width: 100vw;
+    height: 100vh;
 }
 
 html{
-    font-family: montserrat;
-    font-size: 11px;
+    overflow-x: hidden;
 }
 
 a{
@@ -24,16 +23,9 @@ a{
     color: #eee;
 }
 
-/* .big-wrapper{
-    width: 100%;
-    height: 100vh;
-    height: 100vh;
-    background:  url('../assets/images/sign.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-position: 50% 30%;
-    overflow: hidden;
-} */
+.hidden{
+    display: none;
+}
 
 #lamp{
     width: 43vw;
@@ -54,6 +46,7 @@ a{
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat ;
+    z-index: -1;
 }
 
 #interactiveBg.animated {
@@ -73,118 +66,125 @@ a{
     }
 }
 
-/* NAV */
+.fuck{ color: purple;}
 
-.menu-toggle{
+
+/* NAV */
+.menu-toggle {
     display: block;
-    position: fixed;
-    top: 2.5rem;
-    right: 2.5rem;
-    color: #eeeeee;
-    font-size: 3rem;
-    cursor: pointer;
-    z-index: 1000;
-}
+    position: absolute;
+    top: 50px;
+    right: 8vw;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  .menu-toggle li {
+    text-decoration: none;
+    color: #9c9c9c;
+    transition: color 0.3s ease;
+  }
+  
+  .menu-toggle a:hover {
+    color: crimson;
+  }
+  
+  
+  .menu-toggle input {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 32px;
+    top: -7px;
+    left: -5px;
+    opacity: 0; 
+    z-index: 2; 
+    -webkit-touch-callout: none;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    position: relative;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    z-index: 1;
+    background: #cdcdcd;
+    transform-origin: 4px 0px;
+    transition: transform 0.1s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.1s ease;
+  }
+
+
+  
+  .menu-toggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+  
+  .menu-toggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-20px, -20px);
+    background: #9c9c9c;
+  }
+  
+  .menu-toggle input:checked ~ span:nth-last-child(3)
+  {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  
+  .menu-toggle input:checked ~ span:nth-last-child(2)
+  {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+
 nav{
-    padding-top: 0;
-    display: none;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    height: 100vh;
+    width: 100vw;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100vh;
     font-size: 1.5rem;
     text-align: center;
-}
-nav ul{
-    margin-top: 5rem;
-}
-
-nav ul li a{
-    margin: 0;
-    font-size: 2.5rem;
-    line-height: 5rem;
-}
-
-nav ul{
-    flex-direction: column;
-}
-
-.brand{
-    font-size: 5rem;
+    padding: 3rem 0 0 0;
 }
 
 .overlay.menu-open,
 nav.menu-open{
-    display: flex;
-    transform: scale(1);
-    opacity: 1;
+    left: 0;
+    background: rgba(0,0,0, .8);
 }
 
-/**/
+.overlay, .nav{
+    transition: left 0.5s ease;
+}
 
-.logo{
-    font-size: 3rem;
-    font-weight: 300;
-    transform: translateX(-100rem);
-    animation: slideIn .5s forwards;
+.overlay.menu-open
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 130px 50px;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav ul{
+    flex-direction: column;
+    margin-top: 5rem;
+    list-style: none;
+}
+
+nav ul li a{
+    line-height: 3rem;
 }
 
 .logo span{
     color: crimson;
-}
-
-/* slide in animation*/
-nav ul li{
-    list-style: none;
-    transform: translateX(100rem);
-    animation: slideIn .5s forwards;
-}
-
-nav ul li:nth-child(1){ animation-delay: 0s; }
-nav ul li:nth-child(2){ animation-delay: .3s; }
-nav ul li:nth-child(3){ animation-delay: .6s; }
-nav ul li:nth-child(4){ animation-delay: .9s; }
-
-/* slide out animation */
-nav ul li .goingOut{
-    list-style: none;
-    transform: translateX(-100rem);
-    animation: slideOut .5s forwards;
-}
-
-nav ul li.goingOut:nth-child(1){ animation-delay: 0s; }
-nav ul li.goingOut:nth-child(2){ animation-delay: .3s; }
-nav ul li.goingOut:nth-child(3){ animation-delay: .6s; }
-nav ul li.goingOut:nth-child(4){ animation-delay: .9s; }
-/**/
-
-
-
-nav ul li a::before,
-nav ul li a::after{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    background-color: crimson; 
-    left: 0;
-    transform: scaleX(0);
-    transition: all .3s;
-}
-
-nav ul li a::before{
-    top: 0;
-    transform-origin: right;
-}
-
-nav ul li a::after{
-    bottom: 0;
-    transform-origin: left;
-}
-
-nav ul li a:hover::before,
-nav ul li a:hover::after{
-    transform: scaleX(1);
 }
 
 .overlay{
@@ -200,46 +200,39 @@ nav ul li a:hover::after{
     display: none; 
 }
 
-@keyframes slideIn {
-    from{
-
-    }
-    to{
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideOut {
-    from{
-        transform: translateX(0);
-    }
-    to{
-        
-    }
-}
-
 @media screen and (min-width: 700px){
-    .menu-toggle{
+    .hideOnDesktop, .menu-toggle{
         display: none;
     }
+
     .container{
         width: 90%;
         margin: 0 auto;
     }
 
+    .logo{
+        font-size: 2rem;
+        font-weight: 300;
+        transform: translateX(-100rem);
+        animation: slideIn .5s forwards;
+    }
+    
     nav{
-        padding-top: 5rem;
+        left: 0;
+        padding: 1rem 5rem;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         height: 5em;
         font-size: 1rem;
+        background: rgba(0,0,0, .7);
     }
     
     nav ul{
         display: flex;
         flex-direction: row;
+        margin: 0;
     }
 
     nav ul li a{
@@ -251,6 +244,54 @@ nav ul li a:hover::after{
     
     nav ul li a:last-child{
         margin-right: 0;
+    }
+
+    /* slide in animation*/
+    nav ul li{
+        list-style: none;
+        transform: translateX(100rem);
+        animation: slideIn .5s forwards;
+    }
+
+    nav ul li:nth-child(1){ animation-delay: 0s; }
+    nav ul li:nth-child(2){ animation-delay: .3s; }
+    nav ul li:nth-child(3){ animation-delay: .6s; }
+    nav ul li:nth-child(4){ animation-delay: .9s; }
+
+    @keyframes slideIn {
+        from{
+    
+        }
+        to{
+            transform: translateX(0);
+        }
+    }
+
+    nav ul li a::before,
+    nav ul li a::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: crimson; 
+        left: 0;
+        transform: scaleX(0);
+        transition: all .3s;
+    }
+
+    nav ul li a::before{
+        top: 0;
+        transform-origin: right;
+    }
+
+    nav ul li a::after{
+        bottom: 0;
+        transform-origin: left;
+    }
+
+    nav ul li a:hover::before,
+    nav ul li a:hover::after{
+        transform: scaleX(1);
     }
 
     #lamp{
