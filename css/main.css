@@ -12,6 +12,8 @@
 :root, html, body{
     width: 100vw;
     height: 100vh;
+    font-size: 62.5%;
+    box-sizing: border-box;
 }
 
 html{
@@ -65,8 +67,6 @@ a{
         -webkit-filter: sepia(0) saturate(2);
     }
 }
-
-.fuck{ color: purple;}
 
 
 /* NAV */
